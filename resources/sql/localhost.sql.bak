@@ -1,0 +1,300 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.10.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Oct 22, 2013 at 05:59 AM
+-- Server version: 5.5.20
+-- PHP Version: 5.3.10
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `wish`
+--
+CREATE DATABASE `wish` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `wish`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `avatar`
+--
+
+CREATE TABLE IF NOT EXISTS `avatar` (
+  `ID` int(255) NOT NULL AUTO_INCREMENT,
+  `TeamID` varchar(16) NOT NULL,
+  `UserID` varchar(16) NOT NULL,
+  `Codename` varchar(25) NOT NULL,
+  `WishItem` varchar(255) NOT NULL,
+  `WishDesc` varchar(255) NOT NULL,
+  `Avatar` varchar(255) NOT NULL,
+  `Upload` varchar(255) NOT NULL,
+  `Link` varchar(255) NOT NULL,
+  `Validity` int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `avatar`
+--
+
+INSERT INTO `avatar` (`ID`, `TeamID`, `UserID`, `Codename`, `WishItem`, `WishDesc`, `Avatar`, `Upload`, `Link`, `Validity`) VALUES
+(1, 'ea9728bb625d9346', 'f12ba65aead04ccb', 'hatrick', 'Mark 42', 'the quick brown fox jumps', '1281052', './uploads/526116ec02e79/a29efd523ab758d5d31d5575be158c41.png', 'https://google.com', 1),
+(2, 'ea9728bb625d9346', 'd7dc0af5f777dca8', 'be the reds', '', '', '1281006', '', '', 1),
+(3, 'ea9728bb625d9346', '319ea7ab841064f9', 'Dickies', 't shirt', 'spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam spam ', '1281001', 'wawer', '', 1),
+(4, 'ea9728bb625d9346', '86e132331f007a7f', 'RTEAS', 'what the fox say', 'Some Description for my WishItem', '1281025', '', 'aw', 1),
+(5, 'ea9728bb625d9346', '5dae80af80b4a132', 'lgx prm', 'something', 'hello world!', '1281036', '', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `ID` int(255) NOT NULL AUTO_INCREMENT,
+  `AvatarID` int(255) NOT NULL,
+  `User` varchar(255) NOT NULL,
+  `Comment` varchar(255) NOT NULL,
+  `DateStamp` varchar(100) NOT NULL,
+  `Status` int(1) NOT NULL DEFAULT '1' COMMENT '0(deleted); 1(ok)',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`ID`, `AvatarID`, `User`, `Comment`, `DateStamp`, `Status`) VALUES
+(1, 2, 'remzaki', 'sssshhh!', '1', 1),
+(2, 2, 'red', 'a sample comment here', '2', 1),
+(3, 4, 'razel', 'another sample comment', '2', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logs`
+--
+
+CREATE TABLE IF NOT EXISTS `logs` (
+  `ID` int(255) unsigned NOT NULL AUTO_INCREMENT,
+  `Type` int(2) NOT NULL,
+  `Description` varchar(255) NOT NULL,
+  `User` varchar(255) NOT NULL,
+  `Details` varchar(255) NOT NULL,
+  `IPAddress` text NOT NULL,
+  `UserAgent` varchar(255) NOT NULL,
+  `Date` varchar(100) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=74 ;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`ID`, `Type`, `Description`, `User`, `Details`, `IPAddress`, `UserAgent`, `Date`) VALUES
+(1, 1, 'Register', 'remzaki', 'Successfully register user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:23 PM'),
+(2, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:23 PM'),
+(3, 3, 'Passcode', 'remzaki', 'Successfully create passcode', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:24 PM'),
+(4, 5, 'Page', 'remzaki', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:24 PM'),
+(5, 6, 'Codename', 'remzaki', 'Successfully create codename', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:24 PM'),
+(6, 7, 'Avatar', 'remzaki', 'Updated Avatar', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:24 PM'),
+(7, 8, 'Wish', 'remzaki', 'Updated Wishlist', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:37 PM'),
+(8, 5, 'Page', 'remzaki', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:38 PM'),
+(9, 8, 'Wish', 'remzaki', 'Updated Wishlist', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:44 PM'),
+(10, 8, 'Wish', 'remzaki', 'Updated Wishlist', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:46 PM'),
+(11, 5, 'Page', 'remzaki', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:48 PM'),
+(12, 1, 'Register', 'reden', 'Successfully register user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:50 PM'),
+(13, 2, 'Login', 'reden', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:51 PM'),
+(14, 3, 'Passcode', 'reden', 'Successfully create passcode', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:51 PM'),
+(15, 5, 'Page', 'reden', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:51 PM'),
+(16, 6, 'Codename', 'reden', 'Successfully create codename', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:51 PM'),
+(17, 7, 'Avatar', 'reden', 'Updated Avatar', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:51 PM'),
+(18, 1, 'Register', 'deqs', 'Successfully register user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:52 PM'),
+(19, 2, 'Login', 'deqs', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:52 PM'),
+(20, 3, 'Passcode', 'deqs', 'Successfully create passcode', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:52 PM'),
+(21, 5, 'Page', 'deqs', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:52 PM'),
+(22, 6, 'Codename', 'deqs', 'Successfully create codename', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:52 PM'),
+(23, 7, 'Avatar', 'deqs', 'Updated Avatar', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:53 PM'),
+(24, 1, 'Register', 'rteas', 'Successfully register user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:54 PM'),
+(25, 2, 'Login', 'rteas', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:54 PM'),
+(26, 3, 'Passcode', 'rteas', 'Successfully create passcode', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:54 PM'),
+(27, 5, 'Page', 'rteas', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:54 PM'),
+(28, 6, 'Codename', 'rteas', 'Successfully create codename', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:54 PM'),
+(29, 7, 'Avatar', 'rteas', 'Updated Avatar', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 2:55 PM'),
+(30, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36', '10-17-2013 Thu 3:08 PM'),
+(31, 5, 'Page', 'rteas', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:27 PM'),
+(32, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:28 PM'),
+(33, 5, 'Page', 'remzaki', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:28 PM'),
+(34, 7, 'Avatar', 'remzaki', 'Updated Avatar', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:28 PM'),
+(35, 1, 'Register', 'razel', 'Successfully register user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:38 PM'),
+(36, 2, 'Login', 'razel', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:38 PM'),
+(37, 3, 'Passcode', 'razel', 'Successfully create passcode', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:38 PM'),
+(38, 5, 'Page', 'razel', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:38 PM'),
+(39, 6, 'Codename', 'razel', 'Successfully create codename', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:39 PM'),
+(40, 5, 'Page', 'razel', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:39 PM'),
+(41, 7, 'Avatar', 'razel', 'Updated Avatar', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 3:39 PM'),
+(42, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .N', '10-17-2013 Thu 3:45 PM'),
+(43, 2, 'Login', 'reden', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36', '10-17-2013 Thu 6:17 PM'),
+(44, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 8:20 PM'),
+(45, 2, 'Login', 'razel', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-17-2013 Thu 8:20 PM'),
+(46, 2, 'Login', 'rteas', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 7:51 AM'),
+(47, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 8:37 AM'),
+(48, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 2:03 PM'),
+(49, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:37 PM'),
+(50, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:45 PM'),
+(51, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:46 PM'),
+(52, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:51 PM'),
+(53, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:52 PM'),
+(54, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:54 PM'),
+(55, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:56 PM'),
+(56, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:56 PM'),
+(57, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:57 PM'),
+(58, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:59 PM'),
+(59, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 5:59 PM'),
+(60, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 6:00 PM'),
+(61, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 6:01 PM'),
+(62, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 6:02 PM'),
+(63, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 6:03 PM'),
+(64, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 6:03 PM'),
+(65, 5, 'Page', 'remzaki', 'Accessed avatar page', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 7:09 PM'),
+(66, 8, 'Wish', 'remzaki', 'Updated Wishlist', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 7:09 PM'),
+(67, 8, 'Wish', 'remzaki', 'Updated Wishlist', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-18-2013 Fri 7:09 PM'),
+(68, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '10-21-2013 Mon 8:54 AM'),
+(69, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-21-2013 Mon 5:41 PM'),
+(70, 1, 'Register', 'moi', 'Successfully register user', '153.59.100.114', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '10-21-2013 Mon 6:13 PM'),
+(71, 2, 'Login', 'moi', 'Successfully login user', '153.59.100.114', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '10-21-2013 Mon 6:14 PM'),
+(72, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-22-2013 Tue 9:21 AM'),
+(73, 2, 'Login', 'remzaki', 'Successfully login user', '153.59.100.196', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0', '10-22-2013 Tue 11:42 AM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `passcode`
+--
+
+CREATE TABLE IF NOT EXISTS `passcode` (
+  `ID` int(255) NOT NULL AUTO_INCREMENT,
+  `UserID` varchar(255) NOT NULL,
+  `Passcode` varchar(255) NOT NULL,
+  `Validity` int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `passcode`
+--
+
+INSERT INTO `passcode` (`ID`, `UserID`, `Passcode`, `Validity`) VALUES
+(1, 'e3c8b143edd65f8c', '5a0fd070eccc4f2c46392f2c7d2f1067', 1),
+(2, 'a52c190cb443a650', '875a86de9e8022f92ebf568aa0c117f9', 1),
+(3, '3192cb787e23c552', '000782453bcf4da0f1c00789f0a03641', 1),
+(4, '55b0af8cb99a9ea1', '48846a5e6515bc75e524eabaa24814a6', 1),
+(5, 'b8ccd805c2a5435b', '4edc0d9b7a1b3e3688fb34c1839bdca1', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team`
+--
+
+CREATE TABLE IF NOT EXISTS `team` (
+  `ID` int(255) unsigned NOT NULL AUTO_INCREMENT,
+  `TeamCode` varchar(255) NOT NULL,
+  `TeamDesc` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `team`
+--
+
+INSERT INTO `team` (`ID`, `TeamCode`, `TeamDesc`) VALUES
+(1, 'AS', 'Advanced Store'),
+(2, 'GST', 'Guest');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teammates`
+--
+
+CREATE TABLE IF NOT EXISTS `teammates` (
+  `ID` int(255) NOT NULL AUTO_INCREMENT,
+  `TeamCode` varchar(255) NOT NULL,
+  `QuicklookID` varchar(8) NOT NULL,
+  `Flag` int(1) NOT NULL DEFAULT '0' COMMENT '0(not reg); 1(reg)',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+
+--
+-- Dumping data for table `teammates`
+--
+
+INSERT INTO `teammates` (`ID`, `TeamCode`, `QuicklookID`, `Flag`) VALUES
+(1, 'AS', 'ra185061', 1),
+(2, 'AS', 'rc185173', 1),
+(3, 'AS', 'ad185111', 1),
+(4, 'AS', 're185015', 1),
+(5, 'AS', 'mm250450', 1),
+(6, 'AS', 'ca250131', 0),
+(7, 'AS', 'mo185042', 0),
+(8, 'AS', 'jp185193', 0),
+(9, 'AS', 'rr185121', 1),
+(10, 'AS', 'js185148', 0),
+(11, 'AS', 'mt185084', 0),
+(12, 'AS', 'cu185010', 0),
+(13, 'AS', 'cm185059', 0),
+(14, 'AS', 'ra185067', 0),
+(15, 'AS', 'ma185021', 0),
+(16, 'AS', 'bb185088', 0),
+(17, 'AS', 'cc185155', 0),
+(18, 'AS', 'rc185092', 0),
+(19, 'AS', 'ed185031', 0),
+(20, 'AS', 'he185001', 0),
+(21, 'AS', 'pg185065', 0),
+(22, 'AS', 'cp185035', 0),
+(23, 'AS', 'cp185042', 0),
+(24, 'AS', 'ks185058', 0),
+(25, 'AS', 'ct185040', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `ID` int(255) unsigned NOT NULL AUTO_INCREMENT,
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Firstname` char(255) NOT NULL,
+  `Lastname` varchar(255) NOT NULL,
+  `QuicklookID` varchar(8) NOT NULL,
+  `Date` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `Username`, `Password`, `Firstname`, `Lastname`, `QuicklookID`, `Date`) VALUES
+(1, 'remzaki', 'bf504a4c1495ad0c763120a100052192', 'reimark', 'cogonon', 'rc185173', '10-17-2013 Thu 2:23 PM'),
+(2, 'reden', '6c8cc06b2c65a699fa77d0eeb9757488', 'redentor', 'ambion', 'ra185061', '10-17-2013 Thu 2:50 PM'),
+(3, 'deqs', '8c3994811ad150332be8aae8f338ac5b', 'anthony', 'dequins', 'ad185111', '10-17-2013 Thu 2:52 PM'),
+(4, 'rteas', 'ba5f1511ec127d73c9f5a3204e271e00', 'richard', 'estrera', 're185015', '10-17-2013 Thu 2:54 PM'),
+(5, 'razel', '405d23fdb7b33866878bc48a03b53eba', 'razel', 'ricabo', 'rr185121', '10-17-2013 Thu 3:38 PM'),
+(6, 'moi', 'c3b1aa92e1fae8124fad236972725637', 'Moonyeen', 'Magdadaro', 'mm250450', '10-21-2013 Mon 6:13 PM');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

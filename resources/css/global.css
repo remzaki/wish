@@ -1,0 +1,211 @@
+@font-face{
+	font-family: Open Sans;
+	src: url('../fonts/OpenSans-Regular.ttf'),
+	url('../fonts/OpenSans-Regular-webfont.eot');	/*For IE 9*/
+}
+@font-face{
+	font-family: Segoe Script;
+	src: url('../fonts/segoesc.ttf');
+}
+@font-face{
+	font-family: Joti One;
+	src: url('../fonts/JotiOne-Regular.ttf');
+}
+
+body{
+	font-family: Open Sans;
+	font-size: 13px;
+	margin: 0 auto;
+	background:#F5F5F5;
+}
+a{
+	color: green;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+input, textarea{
+	border: 1px solid #D3D3D3;
+	outline: none;
+	font-family: Open Sans;
+	color: #474747;
+	font-size:13px;
+}
+
+input[type="text"], input[type="password"]{
+	padding-left: 1em;
+	padding-right: 1em;
+	width: 15em;
+	height: 2em;
+	color: #474747;
+}
+input[type="file"]{
+	width: 17em;
+	height: 2em;
+}
+input[type="submit"], input[type="reset"], input[type="button"]{
+	cursor: pointer;
+	height: 3em;
+	width: 8em;
+	
+	transition: background 0.1s, border 0.1s;
+	-moz-transition: background 0.1s, border 0.1s;
+	-webkit-transition: background 0.1s, border 0.1s;
+	-o-transition: background 0.1s, border 0.1s;
+}
+input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover{
+	background: #4082E6;
+	border: 1px solid #3368B8;
+	color: white;
+}
+input:hover, textarea:hover{
+	border: 1px solid #4082E6;
+}
+input:focus, textarea:focus{
+	color: black;
+}
+
+
+
+
+/* HEADER */
+#header{
+	height: 30px;
+	padding-top: 20px;
+	background: white;
+	margin: auto;
+	background:#F5F5F5;
+}
+.header_title{
+	height: 30px;
+	margin-left: 2em;
+	margin-right: 2em;
+	/*color: #33AD33;*/
+}
+#title{
+	font-family: Segoe Script;
+	font-size: 140%;
+}
+#tmenu{
+	padding-top: 0.5em;
+	float: right;
+}
+/* HEADER */
+
+/* COATING */
+#coat{
+	margin : auto;
+	background:white;
+}
+/* COATING */
+
+/* MAIN */
+#container{
+	margin:0 auto;
+	padding-top: 5em;
+	padding-bottom: 1em;
+	width: 80em;
+	height:40em;
+}
+	/* MENU */
+#menu{
+	float: left;
+	width: 18em;
+	height: 100%;
+	font-family: Joti One;
+}
+#menu_btn, .menu_img, #menu_btn a{
+	width: 100%;
+	height: 5em;
+	margin-bottom: 0px;
+}
+#menu_btn{
+	border: 1px solid white;
+	transition: background 0.5s, border 0.5s;
+}
+#menu_btn p{
+	margin: 0 0 0;
+	font-size: 150%;
+	line-height: 3em;
+	text-indent: 1.5em;
+}
+#menu_btn a{
+	display: block;
+}
+.menu_img{
+    float: right;
+    margin-top: -59px;
+    opacity: 0.3;
+}
+#menu .hme:hover{
+    background: #FF9980;
+	border: 1px solid #CC7A66;
+}
+#menu .ava:hover{
+    background: #FF7F7F;
+	border: 1px solid #CC6666;
+}
+#menu .wsh:hover{
+    background: #4DB870;
+	border: 1px solid #3E935A;
+}
+#menu .cns:hover{
+    background: #66A3FF;
+	border: 1px solid #5282CC;
+}
+#home_img{
+	background: url(../images/menu/1358182156_Ewok_Residence.png) no-repeat scroll right bottom transparent;
+}
+#ava_img{
+	background: url(../images/menu/1358181865_Maghulk.png) no-repeat scroll right transparent;
+}
+#wsh_img{
+	background: url(../images/menu/1358182159_Fantastic_Trash.png) no-repeat scroll right transparent;
+}
+#cns_img{
+	background: url(../images/menu/1358182206_Techified_Ironfolder.png) no-repeat scroll right transparent;
+}
+	/* MENU */
+	/* CONTENT*/
+#content{
+	float: right;
+	width: 61em;
+	height: 100%;
+}
+.info{
+	color:#4082E6;
+	border-bottom:1px solid #4082E6;
+	padding: 5px;
+}
+	/* CONTENT*/
+/* MAIN */
+
+/* FOOTER */
+#footer{
+	padding-top: 1em;
+	text-align:center;
+	color: gray;
+	font-size: 85%;
+}
+/* FOOTER */
+
+
+
+
+/* ERROR MESSAGES */
+#message{
+	color: orange;
+	text-align: center;
+}
+/* ERROR MESSAGES */
+
+
+
+
+
+
+
+
+
+
